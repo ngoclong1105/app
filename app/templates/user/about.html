@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<!-- Website Template by freewebsitetemplates.com -->
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>About - Game Website Template</title>
+	<link rel="stylesheet" href="/asset/asset1/css/style.css" type="text/css">
+</head>
+<body>
+	<div id="background">
+		<div id="header">
+			<div>
+				<div>
+					<a href="{% url "home" %}" class="logo"><img src="/asset/asset1/images/logo.png" alt=""></a>
+					<ul>
+							<li class="selected">
+									<a href="{% url "home" %}" id="menu1">home</a>
+								</li>
+								<li>
+									<a href="{% url "media" %}" id="menu2">media</a>
+								</li>
+								<li>
+									<a href="{% url "comic" %}" id="menu3">comic</a>
+								</li>
+								<li>
+									<a href="{% url "about" %}" id="menu4">about</a>
+								</li>
+								<li>
+									<a href="{% url "buy" %}" id="menu5">buy</a>
+								</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div id="body">
+			<div>
+				<div>
+					<div class="media1">
+						<div>
+							<div>
+								{% block buy %}
+								<a><h3>Contact</h3></a>
+								<ul>
+										<p>Mọi thông tin liên hệ về hòm thư bighead19980@gmail.com hoặc liên hệ theo số 0963284xxx link facebook
+											<a href="https://www.facebook.com/profile.php?id=100003919413125" target="_blank">fb</a></p>
+								</ul>
+								{% endblock %}
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>

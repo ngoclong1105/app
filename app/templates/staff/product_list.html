@@ -1,0 +1,46 @@
+{% extends 'staff/base.html' %}
+
+{% block body %}
+<div class="container">
+    <form class="mt-3">
+        <input name='keyword' value="{{ keyword }}" class="form-control" placeholder="Tìm sản phẩm" >
+    </form>
+
+    <table class="table">
+        <tr>
+            <th>#</th>
+            <th style="width:10%">Mã truyện</th>
+            <th style="width:15%">Tên truyện</th>
+            <th style="width:15%">Mô tả</th>
+            <th style="width:15%">Đơn giá</th>
+            <th>Ảnh mẫu</th>
+            <th style="width:15%"></th>
+        </tr>
+        {% for product in products %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ product.code }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.description }}</td>
+                <td>{{ product.unitPrice }}</td>
+                <td><img width="100%" src="{{product.imageURL}}"></td>
+                <td>
+                    <a href="{% url 'editProduct' product.id %}?back_url={{request.get_full_path}}">
+                        Chỉnh sửa
+                    </a>
+                    <a href="#" onclick="
+                                if(confirm('Bạn có muốn xóa sản phẩm này không?')){
+                                    location.href= '{% url "deleteProduct" product.id %}?back_url={{request.get_full_path}}';
+
+                                }">
+                        Xóa
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <a class="btn btn-primary" href="{% url 'addProduct' %}?back_url={{request.get_full_path}}">
+        Thêm sản phẩm
+    </a>
+</div>
+{% endblock %}

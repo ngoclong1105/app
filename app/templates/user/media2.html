@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<!-- Website Template by freewebsitetemplates.com -->
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Media - Game Website Template</title>
+	<link rel="stylesheet" href="/asset/asset1/css/style.css" type="text/css">
+</head>
+<body>
+	<div id="background">
+		<div id="header">                                  
+			<div>
+				<div>
+					<a href="{% url "home" %}" class="logo"><img src="/asset/asset1/images/logo.png" alt=""></a>
+					<ul>
+							<li class="selected">
+									<a href="{% url "home" %}" id="menu1">home</a>
+								</li>
+								<li>
+									<a href="{% url "media" %}" id="menu2">media</a>
+								</li>
+								<li>
+									<a href="{% url "comic" %}" id="menu3">comic</a>
+								</li>
+								<li>
+									<a href="{% url "about" %}" id="menu4">about</a>
+								</li>
+								<li>
+									<a href="{% url "buy" %}" id="menu5">buy</a>
+								</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div id="body">
+			<div>
+				<div>
+					<div class="media1">
+						<div>
+							<div>
+								<a href='#'><h3>new trailner</h3></a>
+								<ul>
+									<li>
+										<a href="https://www.youtube.com/watch?v=TcMBFSGVi1c" class="figure" target="_blank"><img src="/asset/asset1/images/video1.jpg" alt=""></a>
+										<span><a href="#">Avenger endgame trailner</a></span>
+									</li>
+									<li>
+										<a href="https://www.youtube.com/watch?v=Nt9L1jCKGnE&t=54s" class="figure" target="_blank"><img src="/asset/asset1/images/video2.jpg" alt=""></a>
+										<span><a href="#">Spiderman home coming</a></span>
+									</li>
+									<li>
+										<a href="https://www.youtube.com/watch?v=ue80QwXMRHg" class="figure" target="_blank"><img src="/asset/asset1/images/video3.jpg" alt=""></a>
+										<span><a href="#">Thor ragnarok</a></span>
+									</li>
+									<li>
+										<a href="https://www.youtube.com/watch?v=q9V0BLTUwDw" class="figure" target="_blank"><img src="/asset/asset1/images/video4.jpg" alt=""></a>
+										<span><a href="#">Loki</a></span>
+                                    </li>
+								</ul>
+							</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="footer">
+			<div>
+				<ul>
+					<li id="facebook">
+						<a href="http://freewebsitetemplates.com/go/facebook/">facebook</a>
+					</li>
+					<li id="twitter">
+						<a href="http://freewebsitetemplates.com/go/twitter/">twitter</a>
+					</li>
+					<li id="googleplus">
+						<a href="http://freewebsitetemplates.com/go/googleplus/">googleplus</a>
+					</li>
+				</ul>
+				<p>
+					<a href="{% url "logout" %}">@Log out</a>
+				</p>
+			</div>
+		</div>
+</body>
+</html>

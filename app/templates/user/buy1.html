@@ -1,0 +1,36 @@
+{% extends 'user/about.html' %}
+
+{% block buy %}
+<a><h3>Thông tin truyện</h3></a>
+
+<ul>
+        <form action="{% url 'addToCart' %}?back_url={{ backURL }}">
+                <input type="hidden" name="productId" value="{{ product.id }}">
+                <table class="table">
+                    <tr>
+                        <td colspan="2">
+                            <img width="170px" height="150px" src="{{ product.imageURL }}"
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Tên sản phẩm : </td>
+                        <td> {{ product.name }} </td>
+                    </tr>
+                    <tr>
+                        <td>Thông tin sản phẩm : </td>
+                        <td> {{ product.description }} </td>
+                    </tr>
+                    <tr>
+                        <td>Đơn giá : </td>
+                        <td> {{ product.unitPrice }} </td>
+                    </tr>
+                    <tr>
+                        <td>Số lượng đặt :</td>
+                        <td> <input style="width: 25%" name="qty" value="1" min="1" type='number'> </td>
+                    </tr>
+                </table>
+                <button type="submit">Thêm vào giỏ hàng</button>
+                <a href="{{ backURL }}">Quay lại</a>
+            </form>
+</ul>
+{% endblock %}

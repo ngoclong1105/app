@@ -1,0 +1,26 @@
+{% extends 'staff/base.html' %}
+
+{% block body %}
+<style>
+    .errorList li {
+        color: red;
+    }
+</style>
+
+<div class="container">
+    <form class="mt-3" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}        
+        <button type="submit" class="btn btn-primary">Ghi lại</button>
+        <a class="btn btn-secondary" href='{{ backURL }}'>Quay lại</a>
+    </form>
+</div>
+
+<script>    
+    $(document).ready(function(){
+        $('form input[type="text"]').addClass('form-control');
+        $('form input[type="number"]').addClass('form-control');
+    });
+</script>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'user/about.html' %}
+
+{% block buy %}
+
+<a><h3>Thông tin người mua hàng</h3></a>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p}}
+
+    <button type='submit' class="btn btn-primary">Tiếp tục</button>
+</form>
+
+<script>    
+    $(document).ready(function(){
+        $('form input[type="text"]').addClass('form-control');
+        $('form input[type="email"]').addClass('form-control');
+    });
+</script>
+{% endblock %}

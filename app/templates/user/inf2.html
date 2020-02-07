@@ -1,0 +1,26 @@
+{% extends 'user/base1.html' %}
+{% block comic %}
+<h3>Infinity gauntlet
+						
+    <select size="1" name="jumpit" onchange="document.location.href=this.value"> 
+        <option  value="{% url "comic2" %}">Chapter</option>
+        <option  value="{% url "inf1" %}">#01</option>
+        <option selected value="{% url "inf2" %}">#02</option>
+        </select> 
+
+</h3>
+<ul id="imgList">
+    {% for i in images %}
+    <li>
+        <img src="{{i.src}}" alt="" height="1800px" width="895px">
+    </li>
+    {%endfor%}
+</ul
+{% endblock %}
+{% block a %}
+{% for a in comment %}
+<ul><h3>{{ a.name }}</h3>
+    <p>{{ a.reply }}</p>
+</ul>
+{% endfor %}
+{% endblock %}

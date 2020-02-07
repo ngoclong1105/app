@@ -1,0 +1,9 @@
+{% extends 'user/about.html' %}
+
+{%block buy%}
+<a><h3>Thank you</h3></a>
+<div class="mt-3">
+    <p>Cảm ơn bạn đã mua sản phẩm của chúng tôi. Chúng tôi sẽ chuyển phát sản phẩm cho bạn trong thời gian sớm nhất.</p>
+    <a class="btn btn-primary" href='{% url "buy" %}'>Tiếp tục mua hàng</a>
+</div>
+{% endblock %}

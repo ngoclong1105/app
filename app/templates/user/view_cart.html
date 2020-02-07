@@ -1,0 +1,70 @@
+{% extends 'user/about.html' %}
+
+{% block buy %}
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<table id='cartTable' class='table'>
+        <tr>
+            <th>Tên sản phẩm</th>
+            <th>Đơn giá</th>
+            <th style="width: 25%">Số lượng</th>
+            <th>Tổng</th>
+            <th></th>
+        </tr>
+        {% for item in request.session.cart %}
+        <tr>
+            <td style="display: none" class="item-id">{{ item.id }}</td>
+            <td>{{ item.name }}</td>
+            <td class='item-price'>{{ item.unitPrice }}</td>
+            <td><input type="number" class="form-control" min="1" value="{{ item.qty }}"></td>
+            <td class='item-total'>{{ item.total }}</td>
+            <td><a class='item-remove' href="#">Xóa</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+    <div class="row">
+        <div class='col-3 offset-9'>
+            <h5>Tổng : <span class='cart-total'>{{ request.session.cartTotal }}</span></h5>
+        </div>
+    </div>
+    
+    <a class="btn btn-primary" href="{% url 'paymentInfo' %}">Thanh toán</a>
+    <a class="btn btn-secondary" href="javascript:clearCart()">Xóa giỏ hàng</a>
+    
+    <script>
+        function clearCart() {
+            if(confirm('Bạn có muốn xóa giỏ hàng?')) {
+                location.href = "{% url 'clearCart' %}";
+            }
+        }
+    
+        function updateTotal() {
+            var total = 0;
+            var itemTotals = $('.item-total');
+            for(var i = 0; i < itemTotals.length; i++) {
+                total += parseFloat($(itemTotals[i]).html());
+            }
+            $('.cart-total').html(total);
+        }
+    
+        $('input[type="number"]').change(function(){        
+            var qty = $(this).val();
+            var tr = $(this).parent().parent();
+            var productId = tr.find('.item-id').html();
+            var unitPrice = tr.find('.item-price').html();
+            tr.find('.item-total').html(qty * unitPrice);
+            updateTotal();
+            fetch(`{% url "updateCartItem" %}?productId=${productId}&qty=${qty}`);
+        });
+    
+        $('.item-remove').click(function(){
+            if(confirm('Bạn có muốn xóa sản phẩm này khỏi giỏ hàng?')){
+                var tr = $(this).parent().parent();
+                var productId = tr.find('.item-id').html();
+                tr.remove();
+                updateTotal();
+                fetch(`{% url "deleteCartItem" %}?productId=${productId}`);
+            }
+        })
+    </script>
+{% endblock %}

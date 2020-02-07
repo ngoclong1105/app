@@ -1,0 +1,18 @@
+{% extends 'user/base1.html' %}
+{% block comic %}
+<h3>Spider man</h3>
+<ul id="imgList">
+        {% for i in images %}
+        <li>
+            <img src="{{i.src}}" alt="" height="1800px" width="895px">
+        </li>
+        {%endfor%}
+    </ul>
+{% endblock %}
+{% block a %}
+{% for a in comment %}
+<ul><h3>{{ a.name }}</h3>
+    <p>{{ a.reply }}</p>
+</ul>
+{% endfor %}
+{% endblock %}

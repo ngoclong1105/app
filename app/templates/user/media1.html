@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<!-- Website Template by freewebsitetemplates.com -->
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Media - Game Website Template</title>
+	<link rel="stylesheet" href="/asset/asset1/css/style.css" type="text/css">
+</head>
+<body>
+	<div id="background">
+		<div id="header">
+			<div>
+				<div>
+					<a href="{% url "home" %}" class="logo"><img src="/asset/asset1/images/logo.png" alt=""></a>
+					<ul>
+							<li class="selected">
+									<a href="{% url "home" %}" id="menu1">home</a>
+								</li>
+								<li>
+									<a href="{% url "media" %}" id="menu2">media</a>
+								</li>
+								<li>
+									<a href="{% url "comic" %}" id="menu3">comic</a>
+								</li>
+								<li>
+									<a href="{% url "about" %}" id="menu4">about</a>
+								</li>
+								<li>
+									<a href="{% url "buy" %}" id="menu5">buy</a>
+								</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div id="body">
+			<div>
+				<div>
+					<div class="media1">
+						<div>
+							<div>
+								<a href='#'><h3>wallpapers</h3></a>
+								<ul>
+									{% for image in images %}
+									<li>
+										<a href="#" class="figure">
+											<div>
+													<img id="myImg_{{image.id}}" src="{{image.src}}" width="194px" height="124px" alt="" style="width:100%;max-width:300px">
+													
+													<!-- The Modal -->
+													<div id="myModal_{{image.id}}" class="modal">
+													
+													  <!-- The Close Button -->
+													  <span class="close" id="close_{{image.id}}">&times;</span>
+													
+													  <!-- Modal Content (The Image) -->
+													  <img class="modal-content" id="img01_{{image.id}}">
+													
+													  <!-- Modal Caption (Image Text) -->
+													  <div id="caption_{{image.id}}"></div>
+													</div>
+														</div>
+													
+													
+														
+														<script>
+															// Get the modal
+													var modal = document.getElementById("myModal_{{image.id}}");
+													
+													// Get the image and insert it inside the modal - use its "alt" text as a caption
+													var img = document.getElementById("myImg_{{image.id}}");
+													var modalImg = document.getElementById("img01_{{image.id}}");
+													var captionText = document.getElementById("caption_{{image.id}}");
+													img.onclick = function(){
+													  modal.style.display = "block";
+													  modalImg.src = this.src;
+													  captionText.innerHTML = this.alt;
+													}
+													
+													// Get the <span> element that closes the modal
+													var span = document.getElementById("close_{{image.id}}");
+													
+													// When the user clicks on <span> (x), close the modal
+													span.onclick = function() { 
+													  modal.style.display = "none";
+													}
+													</script>
+										</a>
+										<span><a href="#">Avenger #0{{ forloop.counter }}</a></span>
+									</li>
+									{% endfor %}
+								</ul>
+							</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="footer">
+			<div>
+				<ul>
+					<li id="facebook">
+						<a href="http://freewebsitetemplates.com/go/facebook/">facebook</a>
+					</li>
+					<li id="twitter">
+						<a href="http://freewebsitetemplates.com/go/twitter/">twitter</a>
+					</li>
+					<li id="googleplus">
+						<a href="http://freewebsitetemplates.com/go/googleplus/">googleplus</a>
+					</li>
+				</ul>
+				<p>
+					<a href="{% url "logout" %}">@Log out</a>
+				</p>
+			</div>
+		</div>
+</body>
+</html>

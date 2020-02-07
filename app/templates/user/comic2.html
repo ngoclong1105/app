@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<!-- Website Template by freewebsitetemplates.com -->
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Games - Game Website Template</title>
+	<link rel="stylesheet" href="/asset/asset1/css/style.css" type="text/css">
+</head>
+<body>
+	<div id="background">
+		<div id="header">
+			<div>
+				<div>
+					<a href="{% url "home" %}" class="logo"><img src="/asset/asset1/images/logo.png" alt=""></a>
+					<ul>
+							<li class="selected">
+									<a href="{% url "home" %}" id="menu1">home</a>
+								</li>
+								<li>
+									<a href="{% url "media" %}" id="menu2">media</a>
+								</li>
+								<li>
+									<a href="{% url "comic" %}" id="menu3">comic</a>
+								</li>
+								<li>
+									<a href="{% url "about" %}" id="menu4">about</a>
+								</li>
+								<li>
+									<a href="{% url "buy" %}" id="menu5">buy</a>
+								</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div id="body">
+			<div>
+				<div>
+					<div class="games">
+						<div class="content1">
+						{% block comic %}
+							<h3>Infinity gauntlet
+						
+								<select size="1" name="jumpit" onchange="document.location.href=this.value"> 
+									<option selected value="">Chapter</option>
+									<option value="{% url "inf1" %}">#01</option>
+									<option value="{% url "inf2" %}">#02</option>
+									</select> 
+
+						</h3>
+							{% endblock %}
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="footer">
+			<div>
+				<ul>
+					<li id="facebook">
+						<a href="http://freewebsitetemplates.com/go/facebook/">facebook</a>
+					</li>
+					<li id="twitter">
+						<a href="http://freewebsitetemplates.com/go/twitter/">twitter</a>
+					</li>
+					<li id="googleplus">
+						<a href="http://freewebsitetemplates.com/go/googleplus/">googleplus</a>
+					</li>
+				</ul>
+				<p>
+					<a href="{% url "logout" %}">@Log out</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

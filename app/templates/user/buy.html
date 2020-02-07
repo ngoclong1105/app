@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<!-- Website Template by freewebsitetemplates.com -->
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Blog - Game Website Template</title>
+	<link rel="stylesheet" href="/asset/asset1/css/style.css" type="text/css">
+</head>
+<body>
+	<div id="background">
+		<div id="header">
+			<div>
+				<div>
+					<a href="{% url "home" %}" class="logo"><img src="/asset/asset1/images/logo.png" alt=""></a>
+					<ul>
+							<li class="selected">
+									<a href="{% url "home" %}" id="menu1">home</a>
+								</li>
+								<li>
+									<a href="{% url "media" %}" id="menu2">media</a>
+								</li>
+								<li>
+									<a href="{% url "comic" %}" id="menu3">comic</a>
+								</li>
+								<li>
+									<a href="{% url "about" %}" id="menu4">about</a>
+								</li>
+								<li>
+									<a href="{% url "buy" %}" id="menu5">buy</a>
+								</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div id="body">
+
+				
+			<div>
+				<div>
+					<div class="blog">
+						<div class="content">
+							<form>
+							<span><input name='keyword' value="{{ keyword }}" class="form-control" placeholder="Tìm sản phẩm" ></span>
+						</form>
+							<ul>
+								{% for product in products %}
+								<li>
+									<div class="header">
+										<b>{{product.name}}</b>
+									</div>
+									<div class="article">
+										<a href="{% url 'productDetail' product.id %}?back_url={{request.get_full_path}}" class="figure"><img src="{{product.imageURL}}" alt="" width="150px" height="166px"></a>
+										<p>
+											{{ product.description }}
+										</p>
+									</div>
+								</li>
+								{% endfor %}
+							</ul>
+						</div>
+						<div class="sidebar">
+							{% if request.session.cart %}
+							<div>
+								<span><a href="{% url 'viewCart' %}" class="selected">Giỏ hàng: {{ request.session.cartTotal }}</a></span>
+							</div>
+							{% else %}
+							<div>
+									<span><a href="#" class="selected">Giỏ hàng:0</a></span>
+							</div>
+							{% endif %}
+							{% if request.session.cart %}
+							<ul>
+								{% for item in request.session.cart %}
+								<li>
+									<h3>{{ item.name }}</h3>
+									<a href="#"><img src="{{ item.url }}" width="160px" height="160px"><br>Số lượng mua: {{ item.qty }} , Đơn giá : {{ item.unitPrice }}</a>
+								</li>
+								{% endfor %}
+							</ul>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="footer">
+			<div>
+				<ul>
+					<li id="facebook">
+						<a href="http://freewebsitetemplates.com/go/facebook/">facebook</a>
+					</li>
+					<li id="twitter">
+						<a href="http://freewebsitetemplates.com/go/twitter/">twitter</a>
+					</li>
+					<li id="googleplus">
+						<a href="http://freewebsitetemplates.com/go/googleplus/">googleplus</a>
+					</li>
+				</ul>
+				<p>
+					<a href="{% url "logout" %}">@Log out</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
